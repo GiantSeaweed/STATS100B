@@ -1,0 +1,68 @@
+%!TEX program = xelatex
+\documentclass[a4papers]{ctexart}
+%数学符号
+\usepackage{amssymb}
+\usepackage{amsmath}
+%表格
+\usepackage{graphicx,floatrow}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{makecell}
+%页边距
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+
+%首行缩进两字符 利用\indent \noindent进行控制
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\setromanfont{Songti SC}
+%\setromanfont{Heiti SC}
+
+\title{STATS100B--Introduction Mathmatical Statistics \\Homework 1}
+\author{Feng Shiwei \ UID:305256428}
+\date{}
+\begin{document}
+\maketitle
+\section*{Exercise 1}
+\noindent Solution：
+\begin{alignat*}{2}
+    P(X=x)&=\binom{n}{x}\theta^x(1-\theta)^{n-x}\\
+          &=\binom{n}{x}(1-p)^n exp\{{ln\dfrac{p}{1-p}x}\}
+\end{alignat*}
+so we get
+\[c(\boldsymbol{\theta})=(1-p)^n,\, 
+\sum_{i=1}^{k}w_i(\boldsymbol{\theta})t_i(x)=ln\dfrac{p}{1-p}x \]
+\[
+    \sum_{i=1}^{k} \dfrac{\partial w_i(\boldsymbol{\theta})}{\partial \theta_j } t_i(x)    = \dfrac{1}{p(1-p)}x,\,
+    \sum_{i=1}^{k} \dfrac{\partial^2 w_i(\boldsymbol{\theta})}{\partial \theta_j^2 } t_i(x)= \dfrac{2p-1}{p^2(1-p)^2}x \]
+\[
+    \dfrac{\partial^2}{\partial \theta_j^2} logc(\boldsymbol{\theta})=-\dfrac{n}{(1-p)^2} \]
+Use the second theorem, we can get the $var(X)$.
+\[var( \dfrac{1}{p(1-p) }X) = \dfrac{n}{(1-p)^2} - E(\dfrac{2p-1}{p^2(1-p)^2}X)\]
+\[ \dfrac{1}{p^2(1-p)^2}var(X) = \dfrac{n}{(1-p)^2} - \dfrac{2p-1}{p^2(1-p)^2}E(X)
+    = \dfrac{n}{(1-p)^2} - \dfrac{2p-1}{p^2(1-p)^2}np \]
+\[\therefore var(X)=np(1-p)\]
+
+\section*{Exercise 2}
+\noindent Solution:
+\[ \int_{x}h(x)c(\boldsymbol{\theta})exp \big\{ \sum_{i=1}^{k}w_i(\boldsymbol{\theta})t_i(x) \big\}dx =1 \]
+Differentiate both side w.r.t $\theta_j$, 
+\[ \int_{x}\Big[h(x)\dfrac{\partial c(\boldsymbol{\theta})}{\partial \theta_j}exp\big(\sum_{i=1}^{k}w_i(\boldsymbol{\theta})t_i(x)\big)  
+    + h(x)c(\boldsymbol{\theta})\sum_{i=1}^{k} \dfrac{\partial w_i(\boldsymbol{\theta})}{\partial \theta_j }t_i(x)exp\big(\sum_{i=1}^{k}w_i(\boldsymbol{\theta})t_i(x)\big)\Big ]dx = 0 \]
+\[  
+   \int_{x}\sum_{i=1}^{k} \dfrac{\partial w_i(\boldsymbol{\theta})}{\partial \theta_j }t_i(x)\Big[h(x)c(\boldsymbol{\theta})exp\big(\sum_{i=1}^{k}w_i(\boldsymbol{\theta})t_i(x)\big)\Big ]dx
+  =- \dfrac{1}{c(\boldsymbol{\theta})} \dfrac{\partial c(\boldsymbol{\theta})}{\partial \theta_j} \int_{x}\Big[h(x)c(\boldsymbol{\theta}) exp\big(\sum_{i=1}^{k}w_i(\boldsymbol{\theta})t_i(x)\big) \Big ]dx
+\]
+\[
+     \int_{x}\sum_{i=1}^{k} \dfrac{\partial w_i(\boldsymbol{\theta})}{\partial \theta_j }t_i(x)f(x)dx
+  =- \dfrac{\partial logc(\boldsymbol{\theta})}{\partial \theta_j} \int_{x}f(x)dx
+\]
+\[
+    \because \int_{x}f(x)dx=1
+\]
+\[
+    \therefore E\Bigg( \sum_{i=1}^{k} \dfrac{\partial w_i(\boldsymbol{\theta})}{\partial \theta_j }t_i(x) \Bigg)
+  =- \dfrac{\partial logc(\boldsymbol{\theta})}{\partial \theta_j} 
+\]
+\end{document}
