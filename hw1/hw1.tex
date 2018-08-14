@@ -1,0 +1,55 @@
+%!TEX program = xelatex
+\documentclass[a4papers]{ctexart}
+%数学符号
+\usepackage{amssymb}
+\usepackage{amsmath}
+%表格
+\usepackage{graphicx,floatrow}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{makecell}
+%页边距
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+
+%首行缩进两字符 利用\indent \noindent进行控制
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\setromanfont{Songti SC}
+%\setromanfont{Heiti SC}
+
+\title{STATS100B--Introduction Mathmatical Statistics \\Homework 1}
+\author{Feng Shiwei \ UID:305256428}
+\date{}
+\begin{document}
+\maketitle
+\section*{Exercise 1}
+\noindent Solution：\\
+\indent 
+$X\sim \Gamma(\alpha,\beta),$ so
+\begin{alignat*}{2}
+    f(x|(\alpha,\beta))&=\dfrac{x^{\alpha-1}e^{-\frac{x}{\beta}}}{\beta^\alpha\Gamma(\alpha)}\\
+    &= \dfrac{1}{\beta^\alpha\Gamma(\alpha)}e^{(\alpha-1)lnx}e^{-\frac{x}{\beta}}\\
+    &= \dfrac{1}{\beta^\alpha\Gamma(\alpha)}exp\{(\alpha-1)lnx-\frac{1}{\beta}x\}
+\end{alignat*}
+where $h(x)=1,\ c(\boldsymbol{\theta})=\dfrac{1}{\beta^\alpha\Gamma(\alpha)},\ 
+\sum_{i=1}^{k}\left(w_i(\boldsymbol{\theta})t_i(x) \right)=(\alpha-1)lnx-\frac{1}{\beta}x.$
+
+\section*{Exercise 2}
+\noindent Solution:\\
+\indent Let $F_Y(y)$ be the cdf of Y and suppose that $g$ is a monotonic reversible function.
+\begin{alignat*}{2}
+   F_Y(y) &= P(Y \le y)\\
+          &= P(g(X) \le y)\\
+          &= P(X \le g^{-1}(y))\\
+          &= \int_{0}^{g^{-1}(y)}\dfrac{2}{\sqrt{2\pi}}e^{-\frac{1}{2}[g^{-1}(y)]^2}\,dx
+\end{alignat*}
+\begin{alignat*}{2}
+    p_Y(y) &= F_Y(y)'
+           &= \dfrac{2}{\sqrt{2\pi}}\frac{\mathrm{d}g^{-1}(y)}{\mathrm{d}y}e^{-\frac{1}{2}[g^{-1}(y)]^2}
+\end{alignat*}
+Because the pdf of gamma distribution is \[ p_Y(y) = \dfrac{y^{\alpha-1}e^{-\frac{y}{\beta}}}{\beta^\alpha\Gamma(\alpha)}, \]\,
+let $g^{-1}(y)=c\sqrt{y}$,  where $c$ is constant.\\
+Therefore, \[ -\dfrac{y}{\beta} = -\frac{1}{2}[g^{-1}(y)]^2 = -\frac{1}{2}cy^2 \]
+\end{document}
