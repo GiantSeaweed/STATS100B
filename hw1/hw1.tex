@@ -51,5 +51,36 @@ where $h(x)=1,\ c(\boldsymbol{\theta})=\dfrac{1}{\beta^\alpha\Gamma(\alpha)},\
 \end{alignat*}
 Because the pdf of gamma distribution is \[ p_Y(y) = \dfrac{y^{\alpha-1}e^{-\frac{y}{\beta}}}{\beta^\alpha\Gamma(\alpha)}, \]\,
 let $g^{-1}(y)=c\sqrt{y}$,  where $c$ is constant.\\
-Therefore, \[ -\dfrac{y}{\beta} = -\frac{1}{2}[g^{-1}(y)]^2 = -\frac{1}{2}cy^2 \]
+Therefore, \[ -\dfrac{y}{\beta} = -\frac{1}{2}[g^{-1}(y)]^2 = -\frac{1}{2}c^2y \]
+\[ \beta = \dfrac{2}{c^2} \]
+\begin{alignat*}{2}
+     p_Y(y)&=\dfrac{2}{\sqrt{2\pi}}\dfrac{1}{2\sqrt{y}}e^{-\frac{1}{2}[c\sqrt{y}]^2}\\
+           &=\dfrac{y^{-\frac{1}{2}} e^{-\frac{c^2y}{2}}}{\sqrt{2}\sqrt{\pi}}\\
+           &=\dfrac{y^{-\frac{1}{2}} e^{-\frac{y}{\beta}}}{\sqrt{2}\sqrt{\pi}}
+\end{alignat*}
+Let $\alpha = \dfrac{1}{2},\beta = 2$ which means $c = 1$ at the same time.\\
+\begin{alignat*}{2}
+     p_Y(y)&=\dfrac{y^{-\frac{1}{2}} e^{-\frac{y}{\beta}}}{\sqrt{2}\sqrt{\pi}}\\
+           &=\dfrac{y^{-\frac{1}{2}} e^{-\frac{y}{2}}}{2^{\frac{1}{2}}\Gamma({\frac{1}{2}})}
+\end{alignat*}
+$\therefore$ When $Y=g(X)=\dfrac{1}{c^2}x^2=x^2,\, Y \sim \Gamma(\frac{1}{2},2).\\$
+
+Actually, there are infinte transformations $Y=g(X)$ that can make Y a gamma distribution. 
+When $Y=Cx^2$ where $C$ is a constant, $Y \sim \Gamma(\dfrac{1}{2},2C)$.
+
+On the condition that $\alpha=\dfrac{1}{2},\beta=2,Y=x^2$,
+\[
+    E(X)=E(Y^{\frac{1}{2}})
+    =\dfrac{ \Gamma(\alpha+\frac{1}{2}) \beta^{\frac{1}{2}} }{\Gamma(\alpha)} 
+    =\dfrac{ \Gamma(1) 2^{\frac{1}{2}} }{\Gamma(\frac{1}{2})}=\sqrt{\dfrac{2}{\pi}}    
+\]
+\[
+    E(X^2)=E(Y)
+    =\dfrac{ \Gamma(\alpha+1) \beta^1 }{\Gamma(\alpha)} 
+    =\dfrac{ \Gamma(\frac{3}{2}) 2^{1} }{\Gamma(\frac{1}{2})}
+    =1
+\]
+\[
+    var(X)=E(X^2)-(EX)^2=1-\dfrac{2}{\pi}
+\]
 \end{document}
