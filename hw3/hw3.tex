@@ -1,0 +1,125 @@
+%!TEX program = xelatex
+\documentclass[a4papers]{ctexart}
+%数学符号
+\usepackage{amssymb}
+\usepackage{amsmath}
+%表格
+\usepackage{graphicx,floatrow}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{makecell}
+%页边距
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+
+%首行缩进两字符 利用\indent \noindent进行控制
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\setromanfont{Songti SC}
+%\setromanfont{Heiti SC}
+
+\title{STATS100B--Introduction Mathmatical Statistics \\Homework 3}
+\author{Feng Shiwei \ UID:305256428}
+\date{}
+\begin{document}
+\maketitle
+\section*{Exercise 1}
+\noindent (a) Solution：\\
+\indent 
+\[ M_X(t) = exp\{{\dfrac{\sigma^2}{2}t^2+\mu t}\}  \]
+
+\begin{alignat*}{2}
+    M_{aX+b}\left( t\right) &=e^{bt}M_X\left( at\right) \\
+    &=e^{bt}exp\left\{ \dfrac {\sigma ^{2}}{2}a^{2}t+\mu at\right\} \\
+    &= exp\left\{ \dfrac {\left( a\sigma \right) ^{2}}{2}t^{2}+\left( a\mu +b\right) t\right\} 
+\end{alignat*}
+\[ \therefore aX+b\sim N(a\mu +b,a\sigma)\]
+
+\noindent (b) Solution：\\
+\begin{alignat*}{2}
+    F_Y\left( y\right) &= P\left( aX+b\leq y\right) \\
+    &= P(X\le\dfrac{y-b}{a}) \\
+    &= \int _{-\infty}^{\frac {y-b}{ a}}\dfrac {1}{\sqrt {2\pi}\sigma }e^{-\dfrac {\left( x-\mu \right) ^{2}}{2\sigma ^{2}}}dx
+\end{alignat*}
+\begin{alignat*}{2}
+p_{Y}\left( y\right) &= F'_{Y}\left( y\right)\\
+    &=\dfrac {1}{\sqrt {2\pi }\sigma }e^{-\dfrac {\left[ \frac {y-b}{a}-\mu \right] ^{2}}{2\sigma ^{2}}}\dfrac {1}{a}\\
+    &=\dfrac {1}{\sqrt {2\pi }\left( a\sigma \right) }e^{-\frac {1}{2\left( a\sigma \right)^2 }\left[ y-\left( a\mu +b\right) \right] ^{2}}
+\end{alignat*}
+\[
+    \therefore aX+b \sim N(a\mu+b,a\sigma)    
+\]
+
+\section*{Exercise 2}
+\noindent Solution:\\
+By definiation, 
+\begin{alignat*}{2}
+   M_{lnx}(t) &= E(e^{tlnx})
+          &= E(X^t)
+\end{alignat*}
+\[ \because lnX \sim N(\mu,\sigma)\]
+\[ \therefore M_{lnx}(t) = exp\{\mu t+\dfrac{1}{2}\sigma^2t^2\} \]
+\[ \therefore E(X^t) = exp\{\mu t+\dfrac{1}{2}\sigma^2t^2\} \]
+\[ E(X)=exp\{\mu+\dfrac{1}{2}\sigma^2\},\,E(X^2)=exp\{2\mu+2\sigma^2\}\]
+\[ var(X) = E(X^2)-[E(X)]^2 = e^{\sigma^2+2\mu}(e^{\sigma^2}-1)\]
+
+\section*{Exercise 3}
+\[ M_X(t)=(1-\beta t)^{-\alpha}\]
+\begin{alignat*}{2}
+    M_T(t) &= \prod_{i=1}^n M_{X_i}(t) 
+           &= (1-\beta t)^{-n\alpha}
+\end{alignat*}
+\[\therefore T \sim \Gamma(n\alpha,\beta)\]
+\begin{alignat*}{2}
+    M_{\bar{X}}(t) &= \prod_{i=1}^n M_{X_i}\Big(\dfrac{t}{n}\Big)  
+           &= \Big(1-\dfrac{\beta}{n} t\Big)^{-n\alpha}
+\end{alignat*}
+\[\therefore T \sim \Gamma\Big(n\alpha,\dfrac{\beta}{n}\Big)\]
+
+
+\section*{Exercise 4}
+\begin{alignat*}{2}
+     E(X^4)&=E[X^3(X-\mu+\mu)]\\
+           &=E[X^3(X-\mu)]+\mu E(X^3)\\
+           &=\sigma^2 E(X^2)+\mu \Big[ E[(X^2)(X-\mu)] + \mu E(X^2) \Big] \\
+           &=\sigma^2 [(EX)^2+var(X)]+\mu \Big[ 2\sigma^2 E(X) + \mu [(EX)^2+var(X)] \Big] \\
+           &=\sigma^2 [\mu^2+\sigma^2]+\mu \Big[ 2\mu \sigma + \mu [\mu ^2+\sigma^2] \Big] \\
+           &=\mu^2 + 6\mu^2\sigma^2+3\sigma^4
+\end{alignat*}
+
+\section*{Exercise 5}
+\[X = \begin{pmatrix}x_1 \\ x_2\end{pmatrix} \sim
+ N\Big( \begin{pmatrix}\mu_1 \\ \mu_2\end{pmatrix}   ,
+        \begin{pmatrix}\sigma_1 & \sigma_{12}\\ \sigma_{21} & x_2\end{pmatrix} \Big)\]
+
+\[ M_X(t)=M_{X_1,X_2}(t_1,t_2)=E(e^{t_1 X_1+t_2 X_2})
+=exp\Big\{ t_1\mu _{1}+t_{2}\mu_2+\dfrac {1}{2}\sigma ^{2}_{1}t^{2}_{1}+\dfrac {1}{2}\sigma ^{2}_{2}t^{2}_{2}+t_{1}t_{2}\sigma _{12}\Big\} \]
+
+\[
+    \dfrac{\partial ^{2}\Psi \left( t_{1},t_{2}\right) }{\partial t_1\partial t_2} = \sigma_{12}
+\]
+\[\therefore  \dfrac{\partial ^{2}\Psi \left( 0,0\right) }{\partial t_1\partial t_2} = \sigma_{12} = cov(X_1,X_2)\]
+\[
+   \because \dfrac{\partial ^{2}M_{X_1,X_2} \left( t_{1},t_{2}\right) }{\partial t_1\partial t_2}
+    = \sigma _{12}e^{\Psi \left( t_{1},t_{2}\right) } + \left( \mu_1+\sigma ^{2}_{1}t_{1}+t_{1}\sigma _{12})(\mu_2+\sigma ^{2}_{2}t_{2}+t_{1}\sigma _{12}\right) 
+\]
+\[
+    \dfrac{\partial M_{X_1,X_2} \left( t_{1},t_{2}\right) }{\partial t_1}
+    =\left( \mu_1+\sigma ^{2}_{1}t_{1}+t_{1}\sigma _{12} \right) e^{\Psi \left( t_{1},t_{2}\right) }
+\]
+\[
+    \dfrac{\partial M_{X_1,X_2} \left( t_{1},t_{2}\right) }{\partial t_2}
+    =\left( \mu_2+\sigma ^{2}_{2}t_{2}+t_{2}\sigma _{12} \right) e^{\Psi \left( t_{1},t_{2}\right) }
+\]
+\[ \Psi \left( 0,0 \right) = 0\]
+\begin{alignat*}{2}
+    \therefore
+    \dfrac{\partial ^{2}M_{X_1,X_2} \left( 0,0\right) }{\partial t_1\partial t_2}
+    - \dfrac{\partial M_{X_1,X_2} \left(0,0\right) }{\partial t_1}\times
+       \dfrac{\partial M_{X_1,X_2} \left( 0,0\right) }{\partial t_2}
+    &=(\sigma_{12}+\mu_1\mu_2)-\mu_1\times\mu_2\\
+    &=\sigma_{12}\\
+    &=cov(X_1,X_2)
+\end{alignat*}
+\end{document}
