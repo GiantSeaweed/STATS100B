@@ -1,0 +1,76 @@
+%!TEX program = xelatex
+\documentclass[a4papers]{ctexart}
+%数学符号
+\usepackage{amssymb}
+\usepackage{amsmath}
+%表格
+\usepackage{graphicx,floatrow}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{makecell}
+%页边距
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+
+%首行缩进两字符 利用\indent \noindent进行控制
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\setromanfont{Songti SC}
+%\setromanfont{Heiti SC}
+
+\title{STATS100B--Introduction to Mathematical Statistics \\Homework 4}
+\author{Feng Shiwei \ UID:305256428}
+\date{}
+\begin{document}
+\maketitle
+\section*{Exercise 1}
+\noindent (a) Solution：\\
+\indent 
+\[M_{\overline{X}}\left( t\right) =\left( 1-\dfrac {\beta }{n}t\right) ^{-n\alpha }\]
+\begin{alignat*}{2}
+    M_{\overline {X}}\left( \dfrac {2n}{\beta }t\right) &=\left( 1-\dfrac {\beta }{n}\times \dfrac {2n}{\beta }t\right) ^{-n\alpha } \\
+    &= \left(1-2t\right)^{-\frac{2n\alpha}{2}}\\
+    &= M_{\frac{2n}{\beta}\overline{X}}(t)
+\end{alignat*}
+
+
+\noindent (b) Solution：\\
+\begin{alignat*}{2}
+    F_Y\left( y\right) &= P\left( aX+b\leq y\right) \\
+    &= P(X\le\dfrac{y-b}{a}) \\
+    &= \int _{-\infty}^{\frac {y-b}{ a}}\dfrac {1}{\sqrt {2\pi}\sigma }e^{-\dfrac {\left( x-\mu \right) ^{2}}{2\sigma ^{2}}}dx
+\end{alignat*}
+\begin{alignat*}{2}
+p_{Y}\left( y\right) &= F'_{Y}\left( y\right)\\
+    &=\dfrac {1}{\sqrt {2\pi }\sigma }e^{-\dfrac {\left[ \frac {y-b}{a}-\mu \right] ^{2}}{2\sigma ^{2}}}\dfrac {1}{a}\\
+    &=\dfrac {1}{\sqrt {2\pi }\left( a\sigma \right) }e^{-\frac {1}{2\left( a\sigma \right)^2 }\left[ y-\left( a\mu +b\right) \right] ^{2}}
+\end{alignat*}
+\[
+    \therefore aX+b \sim N(a\mu+b,a\sigma)    
+\]
+
+\section*{Exercise 2}
+\noindent Solution:\\
+
+\begin{alignat*}{2}
+   M_{lnx}(t) &= E(e^{tlnx})
+          &= E(X^t)
+\end{alignat*}
+
+
+\section*{Exercise 3}
+\[ M_X(t)=(1-\beta t)^{-\alpha}\]
+\begin{alignat*}{2}
+    M_T(t) &= \prod_{i=1}^n M_{X_i}(t) 
+           &= (1-\beta t)^{-n\alpha}
+\end{alignat*}
+\[\therefore T \sim \Gamma(n\alpha,\beta)\]
+\begin{alignat*}{2}
+    M_{\bar{X}}(t) &= \prod_{i=1}^n M_{X_i}\Big(\dfrac{t}{n}\Big)  
+           &= \Big(1-\dfrac{\beta}{n} t\Big)^{-n\alpha}
+\end{alignat*}
+\[\therefore T \sim \Gamma\Big(n\alpha,\dfrac{\beta}{n}\Big)\]
+
+
+\end{document}
