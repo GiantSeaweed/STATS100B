@@ -65,11 +65,12 @@ $X\sim U(0,1),\,E(X)=\dfrac{1}{2},\,var(X)=\dfrac{1}{12}$.\\
         &= 2E(\sqrt{X_1})E(\sqrt{X_2})
 \end{alignat*}
 \[\because E\left( X^{k}\right) =\dfrac {\Gamma \left( \alpha +k\right) \beta ^{k}}{\Gamma \left( \alpha \right) },\, X\sim \Gamma(\alpha,\beta)\]
-\[\therefore E\left(\sqrt{{X_1}}\right) =\dfrac {\Gamma \left( \alpha +\dfrac{1}{2}\right)\cdot 1 ^{k}}{\Gamma \left( \alpha \right) } = \sqrt{\pi}\]
-\[ E\left(\sqrt{{X_2}}\right) =\dfrac {\Gamma \left( \alpha + 1 \right) \cdot 1 ^{k}}{\Gamma \left( \alpha + \dfrac{1}{2}\right) } 
-= \dfrac{\alpha! }{(\alpha-1)! \sqrt{\pi}}
-= \dfrac{\alpha}{\sqrt{\pi}}\]
-\[\therefore E(Y) = 2\times\sqrt{\pi}\times\dfrac{\alpha}{\pi}=2\alpha\]
+\[\therefore E\left(\sqrt{{X_1}}\right) =\dfrac {\Gamma \left( \alpha +\frac{1}{2}\right)\cdot 1 ^{k}}{\Gamma \left( \alpha \right) } = \dfrac {\Gamma \left( \alpha +\frac{1}{2}\right)}{\Gamma \left( \alpha \right) }\]
+\[ E\left(\sqrt{{X_2}}\right) =\dfrac {\Gamma \left( \alpha + 1 \right) \cdot 1 ^{k}}{\Gamma \left( \alpha + \frac{1}{2}\right) } 
+= \dfrac {\Gamma \left( \alpha + 1\right)}{\Gamma \left( \alpha +\frac{1}{2}\right) } \]
+\[\therefore E(Y) 
+  = 2\times\dfrac {\Gamma \left( \alpha + \frac{1}{2}\right)}{\Gamma \left( \alpha \right)}\times\dfrac {\Gamma \left( \alpha + 1\right)}{\Gamma \left( \alpha +\frac{1}{2}\right) }
+  = 2\alpha\]
 \begin{alignat*}{2}
     var(Y)&=var(2\sqrt{X_1 X_2})\\
           &=E(Y^2)-\left(E(Y)\right)^2\\
