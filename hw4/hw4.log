@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.3.10)  19 AUG 2018 18:05
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017) (preloaded format=xelatex 2018.3.10)  21 AUG 2018 14:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1524,12 +1524,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 26.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 38--39
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 54--55
+Underfull \hbox (badness 10000) in paragraph at lines 39--41
 
  []
 
@@ -1538,20 +1533,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 54--55
 ]
 
 LaTeX Font Warning: Font shape `TU/SongtiSC(0)/m/sl' undefined
-(Font)              using `TU/SongtiSC(0)/m/n' instead on input line 76.
+(Font)              using `TU/SongtiSC(0)/m/n' instead on input line 104.
 
-[2] (./hw4.aux)
+[2] [3] (./hw4.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 22162 strings out of 493005
- 446694 string characters out of 6134596
- 469263 words of memory out of 5000000
- 25925 multiletter control sequences out of 15000+600000
- 11406 words of font info for 67 fonts, out of 8000000 for 9000
+ 22186 strings out of 493005
+ 447073 string characters out of 6134596
+ 475263 words of memory out of 5000000
+ 25937 multiletter control sequences out of 15000+600000
+ 14187 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 57i,12n,67p,10481b,252s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 57i,14n,67p,10481b,252s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on hw4.pdf (2 pages).
+Output written on hw4.pdf (3 pages).
