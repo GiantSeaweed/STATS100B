@@ -1,0 +1,146 @@
+%!TEX program = xelatex
+\documentclass[a4papers]{ctexart}
+%数学符号
+\usepackage{amssymb}
+\usepackage{amsmath}
+%表格
+\usepackage{graphicx,floatrow}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{makecell}
+%页边距
+\usepackage{geometry}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+
+%首行缩进两字符 利用\indent \noindent进行控制
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\setromanfont{Songti SC}
+%\setromanfont{Heiti SC}
+
+\usepackage{pstricks,pst-plot}
+
+
+\title{STATS100B--Introduction to Mathematical Statistics \\Homework 5}
+\author{Feng Shiwei \ UID:305256428}
+\date{}
+\begin{document}
+\maketitle
+\section*{Exercise a}
+\noindent(1) Solution：
+\indent 
+\[ X\sim F_{m,n},\, Y=\dfrac{1}{X}\sim F_{n,m}  \]
+\[ P(X<F_{\alpha;m,n}) = \alpha\]
+\[ P(\dfrac{1}{X} > \dfrac{1}{F_{\alpha;m,n}}) = \alpha\]
+\[ P(Y > \dfrac{1}{F_{\alpha;m,n}}) = 1-\alpha\]
+\[ P(Y < \dfrac{1}{F_{\alpha;m,n}}) = \alpha\]
+\[ \therefore \dfrac{1}{F_{\alpha;m,n}} = F_{1-\alpha;n,m},\, \]
+    which means
+\[ F_{\alpha;m,n} = \dfrac{1}{F_{1-\alpha;n,m}} \]
+
+\noindent (2) Solution：
+\[ Y\sim t_n,\, X=Y^2\sim F_{1,n} \]
+\[ P(-t_{1-\frac{\alpha}{2},n}<Y<t_{1-\frac{\alpha}{2},n}) = 1-\alpha \]
+\[ P(Y^2 < t^2_{1-\frac{\alpha}{2},n}) = 1-\alpha \]
+\[ P(X < t^2_{1-\frac{\alpha}{2},n}) = 1-\alpha \]
+\[ \therefore t^2_{1-\frac{\alpha}{2},n} = F_{1-\alpha;1,n}\]
+
+\section*{Exercise b}
+\noindent Solution：\\
+\[ \bar{X} \sim N(\mu_1,\dfrac{\sigma_1}{\sqrt{13}}),\,
+   \bar{Y} \sim N(\mu_2,\dfrac{\sigma_2}{\sqrt{16}})\]
+\[ \overline {X}+\overline {Y}\sim N\left( \mu _{1}+\mu _{2},\sqrt {\dfrac {\sigma ^{2}_{1}}{13}+\dfrac {\sigma ^{2}_{2}}{16}}\right) \]
+\[ \dfrac {\left( \overline {X}+\overline {Y}\right) -\left( \mu _{1}+\mu _{2}\right) }{\sqrt {\dfrac {\sigma ^{2}_{1}}{13}+\dfrac {\sigma ^{2}_{2}}{16}}}\sim N\left( 0,1\right) \]
+\[  \dfrac{12 S_X^{2}}{\sigma_1}\sim \chi^2_{12},\,
+    \dfrac{15 S_Y^{2}}{\sigma_2}\sim \chi^2_{15}\]
+\[  \dfrac{12 S_X^{2}}{\sigma_1} + \dfrac{15 S_Y^{2}}{\sigma_2} \sim \chi^2_{27}\]
+\[  \dfrac{ \dfrac {\left( \overline {X}+\overline {Y}\right) -\left( \mu _{1}+\mu _{2}\right) }{\sqrt {\frac {\sigma ^{2}_{1}}{13}+\frac {\sigma ^{2}_{2}}{16}}}}{ \sqrt{\dfrac{\frac{12 S_X^{2}}{\sigma_1} + \frac{15 S_Y^{2}}{\sigma_2}}{27}}} \sim t_{27} \]
+
+
+\section*{Exercise c}
+\noindent Solution:\
+\[  \]
+\begin{alignat*}{2}
+    E(X) 
+    &= E\left[\dfrac{\chi^2_{n}/n}{\chi^2_{m}/m}\right] \\
+    &= \dfrac{m}{n}E\left[\chi^2_{n} \right] E\left[ (\chi^2_{m})^{-1} \right] \\
+    &= \dfrac{m}{n}\cdot n\cdot \dfrac{\Gamma(\dfrac{m}{2}-1)\cdot 2^{-1} }{\Gamma(\dfrac{m}{2})} \\
+    &= m \cdot \dfrac{1}{2(\dfrac{m}{2}-1)}\\
+    &= \dfrac{m}{m-2}
+\end{alignat*}
+\begin{alignat*}{2}
+    var(X)
+    &= var\left[\dfrac{\chi^2_{n}/n}{\chi^2_{m}/m} \right]\\
+    &= E\left[\left(\dfrac{\chi^2_{n}/n}{\chi^2_{m}/m}\right)^2\right]-\Bigg(E\left(\dfrac{\chi^2_{n}/n}{\chi^2_{m}/m} \right)\Bigg)^2\\
+    &=\dfrac{m^2}{n^2} \cdot E\Big[(\chi^2_n)^2\Big] \cdot E\Big[(\chi^2_m)^{-2} \Big]
+        - \dfrac{m^2}{n^2}\cdot \Big(E(\chi^2_n) \Big)^2 \cdot \Big(E\left[(\chi^2_m)^{-1}\right] \Big)^2\\
+    &=\dfrac{m^2}{n^2} \times \dfrac{\Gamma(\dfrac{n}{2}+2)\cdot 2^{2} }{\Gamma(\dfrac{n}{2})} \times \dfrac{\Gamma(\dfrac{m}{2}-2)\cdot 2^{-2} }{\Gamma(\dfrac{m}{2})} 
+        - \dfrac{m^2}{n^2}\times n^2 \times \Big( \dfrac{\Gamma(\dfrac{m}{2}-1)\cdot 2^{-1} }{\Gamma(\dfrac{m}{2})}  \Big)^2\\
+    &= \dfrac{m^2}{n^2} \times n(n+2) \times \dfrac{1}{(m-2)(m-4)}
+        - \dfrac{m^2}{n^2} \times n^2 \times \dfrac{1}{(m-2)^2}\\
+    &= \dfrac{2m^2(m+n-2)}{n(m-2)^2(m-4)}
+\end{alignat*}
+
+
+\section*{Exercise d}
+
+
+
+\section*{Exercise e}
+\begin{alignat*}{2}
+    \boldsymbol{Y}' \boldsymbol{\Sigma}\boldsymbol{Y} 
+    &=\begin{pmatrix}Y_1 \\ Y_2 \end{pmatrix} \dfrac{1}{\sigma_1^2\sigma_2^2-\sigma_{12}^2}
+        \begin{pmatrix}\sigma_2^2 & -\sigma_{12} \\ -\sigma_{21} & \sigma_1^2 \end{pmatrix}
+        \begin{pmatrix}Y_1 & Y_2 \end{pmatrix} \\
+    &= \dfrac {\sigma ^{2}_{2}Y^{2}_{1}-2\sigma _{12}Y_{1}Y_{2}+\sigma ^{2}_{1}Y^{2}_{2}}{\sigma ^{2}_{1}\sigma ^{2}_{2}-\sigma ^{2}_{12}}
+    \end{alignat*}
+
+\begin{alignat*}{2}
+    \boldsymbol{Y}' \boldsymbol{\Sigma}\boldsymbol{Y} -\dfrac{Y_1^2}{\sigma_1^2}
+    &= \dfrac {\sigma ^{2}_{2}Y^{2}_{1}-2\sigma _{12}Y_{1}Y_{2}+\sigma ^{2}_{1}Y^{2}_{2}-\sigma ^{2}_{1}\sigma ^{2}_{2}\left( 1-\rho ^{2}\right) \dfrac {Y^{2}_{1}}{\sigma ^{2}_{1}}}{\sigma ^{2}_{1}\sigma ^{2}_{2}\left( 1-\rho ^{2}\right) }\\
+    &= \dfrac {\dfrac {Y^{2}_{1}}{\sigma ^{2}_{1}}-2\rho \dfrac {y_{1}}{\sigma _{1}}\dfrac {Y_{2}}{\sigma _{2}}+\dfrac {Y^{2}_{2}}{\sigma ^{2}_{2}}-\left( 1-\rho ^{2}\right) \dfrac {Y^{2}_{1}}{\sigma ^{2}_{1}}}{1-\rho }\\
+    &= \dfrac {\left( \rho \dfrac {Y_{1}}{\sigma _{1}}-\dfrac {Y_{2}}{\sigma _{2}}\right) ^{2}}{1-\rho ^{2}}
+\end{alignat*}
+
+\[ \because
+    \begin{pmatrix} \rho \dfrac {Y_{1}}{\sigma _{1}} & -\dfrac {Y_{2}}{\sigma _{2}} \end{pmatrix}
+    = \begin{pmatrix} \dfrac{\rho}{\sigma_1} & -\dfrac{1}{\sigma_2} \end{pmatrix}
+      \begin{pmatrix} Y_1 \\ Y_2  \end{pmatrix}
+\]
+
+\begin{alignat*}{2}
+    var\Bigg( \begin{pmatrix} \rho \dfrac {Y_{1}}{\sigma _{1}} & -\dfrac {Y_{2}}{\sigma _{2}} \end{pmatrix} \Bigg) 
+    &= \begin{pmatrix} \dfrac{\rho}{\sigma_1} & -\dfrac{1}{\sigma_2} \end{pmatrix} 
+       \begin{pmatrix}\sigma_2^2 & -\sigma_{12} \\ -\sigma_{21} & \sigma_1^2 \end{pmatrix}
+       \begin{pmatrix} \frac{\rho}{\sigma_1} \\ -\frac{1}{\sigma_2} \end{pmatrix} 
+    &= 1-\rho^2
+\end{alignat*}
+\[  
+    E\Bigg(
+            \begin{pmatrix} \rho \dfrac {Y_{1}}{\sigma _{1}} & -\dfrac {Y_{2}}{\sigma _{2}} \end{pmatrix}
+    \Bigg) 
+    = \dfrac {\rho}{\sigma _{1}}\times 0 -\dfrac {1}{\sigma _{2}}\times 0 = 0
+\]
+\[ \therefore \dfrac{ \rho \dfrac {Y_{1}}{\sigma _{1}}-\dfrac {Y_{2}}{\sigma _{2}}}{\sqrt{1-\rho^2}} \sim N(0,1) \]
+\[ \boldsymbol{Y}' \boldsymbol{\Sigma}\boldsymbol{Y} - \dfrac{Y_1^2}{\sigma_1^2}
+    = \dfrac {\left( \rho \dfrac {Y_{1}}{\sigma _{1}}-\dfrac {Y_{2}}{\sigma _{2}}\right) ^{2}}{1-\rho ^{2}} \sim \chi^2_1
+\]
+
+
+\section*{Exercise 4}
+\begin{alignat*}{2}
+     E(X^4)&=E[X^3(X-\mu+\mu)]\\
+           &=E[X^3(X-\mu)]+\mu E(X^3)\\
+           &=\sigma^2 E(X^2)+\mu \Big[ E[(X^2)(X-\mu)] + \mu E(X^2) \Big] \\
+           &=\sigma^2 [(EX)^2+var(X)]+\mu \Big[ 2\sigma^2 E(X) + \mu [(EX)^2+var(X)] \Big] \\
+           &=\sigma^2 [\mu^2+\sigma^2]+\mu \Big[ 2\mu \sigma + \mu [\mu ^2+\sigma^2] \Big] \\
+           &=\mu^2 + 6\mu^2\sigma^2+3\sigma^4
+\end{alignat*}
+
+\radians
+\psset{xunit = 2cm, yunit = 10 cm, plotpoints = 200}
+
+
+    
+\end{document}
