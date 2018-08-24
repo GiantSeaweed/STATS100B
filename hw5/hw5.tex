@@ -38,6 +38,8 @@
 \[ \therefore \dfrac{1}{F_{\alpha;m,n}} = F_{1-\alpha;n,m},\, \]
     which means
 \[ F_{\alpha;m,n} = \dfrac{1}{F_{1-\alpha;n,m}} \]
+\includegraphics[width=3.5in, height=2.8in]{f-12-40.png}
+\includegraphics[width=3.5in, height=2.8in]{f-40-12.png}
 
 \noindent (2) Solution：
 \[ Y\sim t_n,\, X=Y^2\sim F_{1,n} \]
@@ -45,17 +47,19 @@
 \[ P(Y^2 < t^2_{1-\frac{\alpha}{2},n}) = 1-\alpha \]
 \[ P(X < t^2_{1-\frac{\alpha}{2},n}) = 1-\alpha \]
 \[ \therefore t^2_{1-\frac{\alpha}{2},n} = F_{1-\alpha;1,n}\]
+\includegraphics[width=3.5in, height=2.8in]{f-1-60.png}
+\includegraphics[width=3.5in, height=2.8in]{t-60.png}
 
 \section*{Exercise b}
 \noindent Solution：\\
-\[ \bar{X} \sim N(\mu_1,\dfrac{\sigma_1}{\sqrt{13}}),\,
+\[ \because \bar{X} \sim N(\mu_1,\dfrac{\sigma_1}{\sqrt{13}}),\,
    \bar{Y} \sim N(\mu_2,\dfrac{\sigma_2}{\sqrt{16}})\]
-\[ \overline {X}+\overline {Y}\sim N\left( \mu _{1}+\mu _{2},\sqrt {\dfrac {\sigma ^{2}_{1}}{13}+\dfrac {\sigma ^{2}_{2}}{16}}\right) \]
+\[ \therefore \overline {X}+\overline {Y}\sim N\left( \mu _{1}+\mu _{2},\sqrt {\dfrac {\sigma ^{2}_{1}}{13}+\dfrac {\sigma ^{2}_{2}}{16}}\right) \]
 \[ \dfrac {\left( \overline {X}+\overline {Y}\right) -\left( \mu _{1}+\mu _{2}\right) }{\sqrt {\dfrac {\sigma ^{2}_{1}}{13}+\dfrac {\sigma ^{2}_{2}}{16}}}\sim N\left( 0,1\right) \]
-\[  \dfrac{12 S_X^{2}}{\sigma_1}\sim \chi^2_{12},\,
+\[ \because \dfrac{12 S_X^{2}}{\sigma_1}\sim \chi^2_{12},\,
     \dfrac{15 S_Y^{2}}{\sigma_2}\sim \chi^2_{15}\]
 \[  \dfrac{12 S_X^{2}}{\sigma_1} + \dfrac{15 S_Y^{2}}{\sigma_2} \sim \chi^2_{27}\]
-\[  \dfrac{ \dfrac {\left( \overline {X}+\overline {Y}\right) -\left( \mu _{1}+\mu _{2}\right) }{\sqrt {\frac {\sigma ^{2}_{1}}{13}+\frac {\sigma ^{2}_{2}}{16}}}}{ \sqrt{\dfrac{\frac{12 S_X^{2}}{\sigma_1} + \frac{15 S_Y^{2}}{\sigma_2}}{27}}} \sim t_{27} \]
+\[ \therefore \dfrac{ \dfrac {\left( \overline {X}+\overline {Y}\right) -\left( \mu _{1}+\mu _{2}\right) }{\sqrt {\frac {\sigma ^{2}_{1}}{13}+\frac {\sigma ^{2}_{2}}{16}}}}{ \sqrt{\dfrac{\frac{12 S_X^{2}}{\sigma_1} + \frac{15 S_Y^{2}}{\sigma_2}}{27}}} \sim t_{27} \]
 
 
 \section*{Exercise c}
@@ -84,7 +88,28 @@
 
 
 \section*{Exercise d}
+\[  \bar{X}=\dfrac{1}{n}\boldsymbol{1}'\boldsymbol{X},\, \boldsymbol{1}=(1\, 1\, \cdots 1)'\]
+\[  \begin{pmatrix} \bar{X}\\ X_1-\bar{X}\\X_2-\bar{X}\\ \cdots \\ X_n-\bar{X} \end{pmatrix}
+    = \begin{pmatrix}
+        \dfrac{1}{n}\boldsymbol{1}' \\ \boldsymbol{I}-\dfrac{1}{n}\boldsymbol{1}\boldsymbol{1}'
+    \end{pmatrix}
+    = \boldsymbol{A}\boldsymbol{X}
+    \]
+\begin{alignat*}{2}
+    var(\boldsymbol{A}\boldsymbol{X})  
+    &=  \begin{pmatrix}\dfrac{1}{n}\boldsymbol{1}' \\ \boldsymbol{I}-\dfrac{1}{n}\boldsymbol{1}\boldsymbol{1}' \end{pmatrix} 
+        \begin{pmatrix} (1-\rho)\boldsymbol{I}-\rho\boldsymbol{J}\end{pmatrix}
+       \begin{pmatrix}\dfrac{1}{n}\boldsymbol{1}' & \boldsymbol{I}-\dfrac{1}{n}\boldsymbol{1}\boldsymbol{1}' \end{pmatrix} 
+\end{alignat*}
+Notice that\[ \boldsymbol{1}'\boldsymbol{1}=n,\,\boldsymbol{1}\boldsymbol{1}'=\boldsymbol{J},\,
+             \boldsymbol{1}'\boldsymbol{J}=n\boldsymbol{1}',\,\boldsymbol{J}\boldsymbol{1}=n\boldsymbol{1}\]
 
+\[\therefore
+    var(\boldsymbol{A}\boldsymbol{X})=\begin{pmatrix}
+        (1-\rho)\dfrac{1}{n}+\rho & \boldsymbol{0}\\
+        \boldsymbol{0} & (1-\rho)(\boldsymbol{I}-\dfrac{1}{n}\boldsymbol{1}\boldsymbol{1}')
+    \end{pmatrix} \]    
+\[ \therefore \bar{X}\,  and\,\begin{pmatrix}  X_1-\bar{X}\\X_2-\bar{X}\\ \cdots \\ X_n-\bar{X} \end{pmatrix}\, are \,\,  independent. \]         
 
 
 \section*{Exercise e}
@@ -126,20 +151,6 @@
 \[ \boldsymbol{Y}' \boldsymbol{\Sigma}\boldsymbol{Y} - \dfrac{Y_1^2}{\sigma_1^2}
     = \dfrac {\left( \rho \dfrac {Y_{1}}{\sigma _{1}}-\dfrac {Y_{2}}{\sigma _{2}}\right) ^{2}}{1-\rho ^{2}} \sim \chi^2_1
 \]
-
-
-\section*{Exercise 4}
-\begin{alignat*}{2}
-     E(X^4)&=E[X^3(X-\mu+\mu)]\\
-           &=E[X^3(X-\mu)]+\mu E(X^3)\\
-           &=\sigma^2 E(X^2)+\mu \Big[ E[(X^2)(X-\mu)] + \mu E(X^2) \Big] \\
-           &=\sigma^2 [(EX)^2+var(X)]+\mu \Big[ 2\sigma^2 E(X) + \mu [(EX)^2+var(X)] \Big] \\
-           &=\sigma^2 [\mu^2+\sigma^2]+\mu \Big[ 2\mu \sigma + \mu [\mu ^2+\sigma^2] \Big] \\
-           &=\mu^2 + 6\mu^2\sigma^2+3\sigma^4
-\end{alignat*}
-
-\radians
-\psset{xunit = 2cm, yunit = 10 cm, plotpoints = 200}
 
 
     
