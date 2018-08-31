@@ -28,20 +28,20 @@
 \noindent Solution：\\
 \indent 
 \[L=\dfrac{1}{(2\pi)^{\frac{n}{2}}}|\boldsymbol{\Sigma}|^{-\frac{1}{2}} 
-    e^{\frac{1}{2}(\boldsymbol{Y}-\boldsymbol{\mu1})'\boldsymbol{\Sigma}^{-1}(\boldsymbol{Y}-\boldsymbol{\mu1}) }
+    e^{\frac{1}{2}(\boldsymbol{\boldsymbol{\boldsymbol{Y}}}-\mu\boldsymbol{1})'\boldsymbol{\Sigma}^{-1}(\boldsymbol{\boldsymbol{Y}}-\mu\boldsymbol{1}) }
 \]
-\[lnL = -\dfrac{n}{2}ln(2\pi\sigma^2)-\dfrac{1}{2}ln|V|-\dfrac{1}2\sigma^2(Y-\mu)V^{-1}(Y-\mu)
+\[lnL = -\dfrac{n}{2}ln(2\pi\boldsymbol{\Sigma}^2)-\dfrac{1}{2}ln|\boldsymbol{V}|-\dfrac{1}{2\sigma^2}(\boldsymbol{Y}-\mu)V^{-1}(\boldsymbol{Y}-\mu)
  \]
- \[\dfrac {\partial \ln L}{\partial \mu }=-\dfrac {1}{2\sigma ^{2}}\left[ -Y'V^{-1}1-1'V^{-1}Y+2\mu 1'V^{-1}1\right] =0
+ \[\dfrac {\partial \ln L}{\partial \mu }=-\dfrac {1}{2\sigma ^{2}}\left[ -\boldsymbol{Y'V^{-1}1}-\boldsymbol{1'V^{-1}Y}+2\boldsymbol{\mu 1'V^{-1}1}\right] =0
      \]
-\[ \therefore \hat{\mu} = \dfrac{1'V^{-1}Y}{1'V^{-1}1}\]
-\[ \dfrac {\partial \ln L}{\partial \sigma ^{2}}=-\dfrac {n}{2\sigma ^{2}}+\dfrac {1}{\sigma ^{4}}\left( Y-\mu 1\right) 'V^{-1}\left( Y-\mu 1\right) =0\]
-\[\therefore \hat{\sigma^2} =\dfrac{\left( Y-\hat{\mu} 1\right) 'V^{-1}\left( Y-\hat{\mu} 1\right)}{n} \]
+\[ \therefore \hat{\mu} = \boldsymbol{ \dfrac{1'V^{-1}Y}{1'V^{-1}1} }\]
+\[ \dfrac {\partial \ln L}{\partial \sigma ^{2}}=-\dfrac {n}{2\sigma ^{2}}+\dfrac {1}{\sigma ^{4}}\left( \boldsymbol{Y}-\mu \boldsymbol{1}\right)'\boldsymbol{V}^{-1}\left( \boldsymbol{Y}-\mu \boldsymbol{1}\right) =0\]
+\[\therefore \hat{\sigma^2} =\dfrac{\left( \boldsymbol{Y}-\hat{\mu} \boldsymbol{1}\right) '\boldsymbol{V}^{-1}\left( \boldsymbol{Y}-\hat{\mu} \boldsymbol{1}\right)}{n} \]
 
 
 \section*{Question b}
 \noindent  Solution：
-\[E(\hat{\mu}) = E\left(\dfrac{1'V^{-1}Y}{1'V^{-1}1}\right) = \dfrac{1'V^{-1}E(Y)}{1'V^{-1}1} =\dfrac{1'V^{-1}\mu1}{1'V^{-1}1} =\mu\]
+\[E(\hat{\mu}) = E\left(\dfrac{1'V^{-1}\boldsymbol{Y}}{1'V^{-1}1}\right) = \dfrac{1'V^{-1}E(\boldsymbol{Y})}{1'V^{-1}1} =\dfrac{1'V^{-1}\mu1}{1'V^{-1}1} =\mu\]
 \[  \]
 
 
@@ -55,15 +55,27 @@
     & \dfrac {\partial \ln L}{\partial {\sigma ^{2}}^{(2)} }
 \end{pmatrix}\]
 \[  \dfrac {\partial ^{2}\ln L}{\partial \mu^2 }=-\dfrac {1'V^{-1}1}{\sigma ^{2}} \]
-\[ \dfrac {\partial^{2}\ln L}{\partial \mu \partial \sigma ^{2}}=\dfrac {1}{\sigma ^{4}}\left[ \mu 1'V^{-1}1-1'V^{-1}Y\right] \]
-\[ \dfrac {\partial ^{2}\ln L}{\partial \sigma ^{2}\partial \mu } = \dfrac {1}{\sigma ^{4}}\left[ \mu 1'V^{-1}1-1'V^{-1}Y\right] \]
-\[ \dfrac {\partial \ln L}{\partial {\sigma ^{2}}^{(2)} } =\dfrac {n}{2\sigma ^{4}}-\dfrac {1}{\sigma ^{6}}\left( Y-\mu 1\right) 'V^{-1}\left( Y-\mu 1\right)  \]
+\[ \dfrac {\partial^{2}\ln L}{\partial \mu \partial \sigma ^{2}}=\dfrac {1}{\sigma ^{4}}\left[ \mu 1'V^{-1}1-1'V^{-1}\boldsymbol{Y}\right] \]
+\[ \dfrac {\partial ^{2}\ln L}{\partial \sigma ^{2}\partial \mu } = \dfrac {1}{\sigma ^{4}}\left[ \mu 1'V^{-1}1-1'V^{-1}\boldsymbol{Y}\right] \]
+\[ \dfrac {\partial \ln L}{\partial {\sigma ^{2}}^{(2)} } =\dfrac {n}{2\sigma ^{4}}-\dfrac {1}{\sigma ^{6}}\left( Y-\mu 1\right) 'V^{-1}\left( \boldsymbol{Y}-\mu 1\right)  \]
 \[ \therefore \boldsymbol{I}(\boldsymbol{\theta}) =\begin{pmatrix}
-    -\dfrac {1'V^{-1}1}{\sigma ^{2}}
+
 \end{pmatrix}  \]
 
 \section*{Question d}
 \noindent Solution:
+\[ f\left( y_{i}\right) =\dfrac {1}{\sqrt {2\pi }i\sigma }e^{-\dfrac {\left( y-i\theta \right) ^{2}}{2\left( i\sigma \right) ^{2}}}\]
+\[ L=\prod ^{n}_{i=1}f\left( y_{i}\right) =\left( 2\pi \right) ^{-\frac {n}{2}}\prod ^{n}_{i=1}i\sigma ^{-n}e^{-\frac {1}{2\sigma^2}\sum ^{n}_{i=1}\left( \frac {y_{i}-i\theta }{i}\right) ^{2}}\]
+\[ \ln L=-\dfrac {n}{2}\ln 2\pi +\sum ^{n}_{i=1}\ln i-n\ln \sigma -\dfrac {1}{2\sigma ^{2}}\sum ^{n}_{i=1}\left( \theta -\dfrac {y_{i}}{i}\right) ^{2} \]
+\[ \dfrac {\partial \ln L}{\partial \theta }=-\dfrac {1}{\sigma ^{2}}\sum ^{n}_{i=1}\left( \theta -\dfrac {y_{i}}{i}\right) =0\]
+\[\therefore \hat {\theta }=\dfrac {1}{n}\sum ^{n}_{i=1}\dfrac {y_{i}}{i}\]
+% \[ E\left( \hat {\theta }\right) =\dfrac {1}{n}\sum ^{n}_{i=1}\dfrac {E\left( y_{i}\right) }{i}=\dfrac {1}{n}.\sum ^{n}_{i=1}\dfrac {i\theta }{i}=\theta \]
+\[ var\left( \hat {\theta }\right) =\dfrac {1}{n^{2}}\sum \dfrac {var\left( y_{i}\right) }{i^{2}}=\dfrac {1}{n^{2}}\sum ^{n}_{i=1}\dfrac {i^{2}\sigma ^{2}}{i^{2}}=\dfrac{\sigma ^{2}}{n} \]
+\[ \because \dfrac {\partial ^{2}\ln L}{\partial \theta ^{2}}=-\dfrac {n}{\sigma ^{2}}\]
+\[var\left( \hat {\theta }\right) \geq -\dfrac {1}{E\left( \dfrac {\partial ^{2}\ln L}{\partial \theta ^{2}}\right) }=\dfrac {\sigma ^{2}}{n}\]
+\[ \therefore \hat{\theta}\,\, is\,\, an\,\, efficient\,\, estimator.\]
+
+
 \begin{alignat*}{2}
     \sum_{i=1}^{4}\left( X_{i}-\bar {X}\right) ^{2}
     &=\sum ^{4}_{i=1}X^{2}_{i}-4\bar {X}^{2}\\
@@ -125,5 +137,30 @@
     \end{pmatrix}
 \]
 So the three terms in the RHS are independent each with a $\chi_1^2$ distribution.
+\section*{Question g}
+\[E\left( T-\theta \right) ^{2}=var\left( T\right) +B^{2}\]
+\begin{alignat*}{2}
+    var(T) &= var(\alpha_1\bar{X}+\alpha_2cS)\\
+        &= \alpha_1^2var(\bar{X})+\alpha_2^2var(cS)\\
+        &= \alpha_1^2\dfrac{\theta^2}{n}+\alpha_2^2(c^2-1)\theta^2
+\end{alignat*}
+\[B=E(T)-\theta=(\alpha_1+\alpha_2-1)\theta\]
+\[\therefore E\left( T-\theta \right) ^{2} = \left[ \dfrac {\alpha ^{2}_{1}}{n}+\left( c^{2}-1\right) \alpha ^{2}_{2}+\left( \alpha _{1}+\alpha _{2}-1\right) ^{2}\right] \theta ^{2} \]
+\begin{equation*}
+\begin{cases}
+    \dfrac {\partial E\left( T-\theta \right) ^{2}}{\partial \alpha _{1}}=\dfrac {2\alpha _{1}}{n}+2\left( \alpha _{1}+\alpha _{2}-1\right) =0 \\
+    \dfrac {\partial E\left( T-\theta \right) ^{2}}{\partial \alpha _{2}}=2\left( c^{2}-1\right) \alpha _{2}+2\left( \alpha _{1}+\alpha _{2}-1\right) =0
+\end{cases}
+\end{equation*}
+\begin{equation*}
+    \therefore \begin{cases}
+        \alpha_1 = \dfrac{n(c^2-1)}{(n+1)(c^2-1)+1}\\
+        \alpha_2 = \dfrac{1}{(n+1)(c^2-1)+1}
+    \end{cases}
+\end{equation*}
+\[A=\dfrac {\partial ^{2}E}{\partial \alpha_1^2}=\dfrac {2}{n}+2,B=\dfrac {\partial ^{2}E}{\partial \alpha _{1}\partial \alpha _{2}}=2,C=\dfrac {\partial ^{2}E}{\partial \alpha ^{2}_{2}}=2c^{2}\]
+\[\because A<0,\,B^2-AC=4\left[1-\dfrac{n+1}{n}c^2\right]<0 \,(Using\,\, WolframAlpha) \]
+\[\therefore E\left( T-\theta \right) ^{2} gets\,\, the\,\, minimum \,\,when\,\, \alpha_1\,\, and \,\,\alpha_2 \,\,equal\,\, the\,\, above\,\, values.\]
+\[\therefore T=\dfrac{n(c^2-1)}{(n+1)(c^2-1)+1}\bar{X} + \dfrac{1}{(n+1)(c^2-1)+1}cS\,\, is\,\, the\,\, estimator\,\, that\,\, minimizes\,\, E\left( T-\theta \right) ^{2}\]
 
 \end{document}
