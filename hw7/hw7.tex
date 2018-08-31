@@ -27,44 +27,40 @@
 \section*{Question a}
 \noindent Solution：\\
 \indent 
-\[E(\bar{X}) = \mu = \lambda,\, E(S^2)=\sigma^2=\lambda\]
-\[ f(x) = \dfrac {\lambda ^{x}e^{-\lambda }}{x!}\]
-\[\ln f\left( x\right) =x\ln \lambda -\lambda -\ln x!\]
-\[\dfrac {\partial \ln f\left( x\right) }{\partial \lambda }=\dfrac {x}{\lambda }-1\]
-\[\dfrac {\partial ^{2}\ln f\left( x\right) }{\partial \lambda ^{2}}=-\dfrac {x}{\lambda ^{2}}\]
-Let's find the Cramer-Rao Lower Bound.
-\[var\left( \hat {\lambda }\right) \ge -\dfrac {1}{nE\left( -\dfrac {x}{\lambda ^{2}}\right) }=\dfrac {\lambda ^{2}}{n\lambda }=\dfrac {\lambda }{n}\]
-\[\because var(\bar{X})=\dfrac{\sigma^2}{n}=\dfrac{\lambda}{n} \]
-\[\therefore var(\sigma^2)\ge var(\bar{X})\]
-So $\bar{X}$ is a better estimator.
+\[L=\dfrac{1}{(2\pi)^{\frac{n}{2}}}|\boldsymbol{\Sigma}|^{-\frac{1}{2}} 
+    e^{\frac{1}{2}(\boldsymbol{Y}-\boldsymbol{\mu1})'\boldsymbol{\Sigma}^{-1}(\boldsymbol{Y}-\boldsymbol{\mu1}) }
+\]
+\[lnL = -\dfrac{n}{2}ln(2\pi\sigma^2)-\dfrac{1}{2}ln|V|-\dfrac{1}2\sigma^2(Y-\mu)V^{-1}(Y-\mu)
+ \]
+ \[\dfrac {\partial \ln L}{\partial \mu }=-\dfrac {1}{2\sigma ^{2}}\left[ -Y'V^{-1}1-1'V^{-1}Y+2\mu 1'V^{-1}1\right] =0
+     \]
+\[ \therefore \hat{\mu} = \dfrac{1'V^{-1}Y}{1'V^{-1}1}\]
+\[ \dfrac {\partial \ln L}{\partial \sigma ^{2}}=-\dfrac {n}{2\sigma ^{2}}+\dfrac {1}{\sigma ^{4}}\left( Y-\mu 1\right) 'V^{-1}\left( Y-\mu 1\right) =0\]
+\[\therefore \hat{\sigma^2} =\dfrac{\left( Y-\hat{\mu} 1\right) 'V^{-1}\left( Y-\hat{\mu} 1\right)}{n} \]
+
 
 \section*{Question b}
 \noindent  Solution：
-\begin{alignat*}{2}
- E\left( \alpha \bar {X}+\left( 1-\alpha \right) cS \right) 
- &= \alpha E\left( \bar {X}\right) +\left( 1-\alpha \right) E\left( cS\right) 
- &=\alpha \theta +\left( 1-\alpha \right) \theta
- &=\theta 
-\end{alignat*}
-\[var\left( \alpha \bar {X}+\left( 1-\alpha \right) cS\right) =\alpha \cdot var\left( \bar {X}\right) +\left( 1-\alpha \right) ^{2}\cdot var\left( cS\right) \]
-\[\dfrac {\mathrm{d} var\left( \alpha \bar {X}+\left( 1-\alpha \right) cS\right) }{\mathrm{d}\alpha }
-    = 2\alpha \cdot var\left( \bar {X}\right) +2\left( \alpha -1\right) \cdot var\left( S\right) 
-    = 0
-\]
-\[\alpha =\dfrac {var\left( cS\right) }{var\left( cS\right) +var\left( \bar {X}\right) }\]
-\[ \because var(\bar{X}) = \dfrac{\theta^2}{n},\,
-var(cS)=E(c^2S^2)-(E(cS))^2=c^2\theta^2-\theta^2=(c^2-1)\theta^2 \]
-\[\therefore \alpha = \dfrac{n(c^2-1)}{n(c^2-1)+1} \]
+\[E(\hat{\mu}) = E\left(\dfrac{1'V^{-1}Y}{1'V^{-1}1}\right) = \dfrac{1'V^{-1}E(Y)}{1'V^{-1}1} =\dfrac{1'V^{-1}\mu1}{1'V^{-1}1} =\mu\]
+\[  \]
 
 
 
 \section*{Question c}
 \noindent Solution:
-\[X\sim (\alpha,\beta),\,\bar{X}\sim(n\alpha,\dfrac{\beta}{n})\]
-\[E\Big(\dfrac{1}{\bar{X}}\Big) = \dfrac{\Gamma(n\alpha-1)\Big(\dfrac{\beta}{n}\Big)^{-1}}{\Gamma(n\alpha)}
-= \dfrac{n}{(n\alpha-1)\beta}\]
-\[\therefore \hat{\theta} = \dfrac{n\alpha-1}{n\bar{X}},\,
-E( \hat{\theta} ) = \dfrac{n\alpha-1}{n} E\Big(\dfrac{1}{\bar{X}}\Big) = \dfrac{1}{\beta}  \]
+\[ \boldsymbol{I}(\boldsymbol{\theta}) = -E \begin{pmatrix}
+    \dfrac {\partial ^{2}\ln L}{\partial \mu^2} 
+    & \dfrac {\partial^{2}\ln L}{\partial \mu \partial \sigma ^{2}} \\ \\
+    \dfrac {\partial ^{2}\ln L}{\partial \sigma ^{2}\partial \mu } 
+    & \dfrac {\partial \ln L}{\partial {\sigma ^{2}}^{(2)} }
+\end{pmatrix}\]
+\[  \dfrac {\partial ^{2}\ln L}{\partial \mu^2 }=-\dfrac {1'V^{-1}1}{\sigma ^{2}} \]
+\[ \dfrac {\partial^{2}\ln L}{\partial \mu \partial \sigma ^{2}}=\dfrac {1}{\sigma ^{4}}\left[ \mu 1'V^{-1}1-1'V^{-1}Y\right] \]
+\[ \dfrac {\partial ^{2}\ln L}{\partial \sigma ^{2}\partial \mu } = \dfrac {1}{\sigma ^{4}}\left[ \mu 1'V^{-1}1-1'V^{-1}Y\right] \]
+\[ \dfrac {\partial \ln L}{\partial {\sigma ^{2}}^{(2)} } =\dfrac {n}{2\sigma ^{4}}-\dfrac {1}{\sigma ^{6}}\left( Y-\mu 1\right) 'V^{-1}\left( Y-\mu 1\right)  \]
+\[ \therefore \boldsymbol{I}(\boldsymbol{\theta}) =\begin{pmatrix}
+    -\dfrac {1'V^{-1}1}{\sigma ^{2}}
+\end{pmatrix}  \]
 
 \section*{Question d}
 \noindent Solution:
