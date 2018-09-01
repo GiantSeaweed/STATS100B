@@ -41,9 +41,36 @@
 
 \section*{Question b}
 \noindent  Solution：
-\[E(\hat{\mu}) = E\left(\dfrac{1'V^{-1}\boldsymbol{Y}}{1'V^{-1}1}\right) = \dfrac{1'V^{-1}E(\boldsymbol{Y})}{1'V^{-1}1} =\dfrac{1'V^{-1}\mu1}{1'V^{-1}1} =\mu\]
-\[  \]
-
+\[E(\hat{\mu}) 
+= E\left(\dfrac{\boldsymbol{1}'\boldsymbol{V^{-1}Y}} {\boldsymbol{1}'\boldsymbol{V^{-1}1}}\right) 
+= \dfrac{\boldsymbol{1}'\boldsymbol{V}^{-1}E(\boldsymbol{Y})}{\boldsymbol{1}'\boldsymbol{V^{-1}1}} 
+=\dfrac{\boldsymbol{1}'\boldsymbol{V}^{-1}\mu\boldsymbol{1}}{\boldsymbol{1}'\boldsymbol{V^{-1}1}} 
+=\mu\]
+\begin{alignat*}{2}
+     E(\hat{\sigma^2})
+     &=\dfrac {1}{n}E\left( \boldsymbol{Y}-\hat {\mu }\boldsymbol{1}\right) '\boldsymbol{V}^{-1}\left( \boldsymbol{Y}-\hat {\mu }\boldsymbol{1}\right) \\
+     &=\dfrac {1}{n}E\left[ tr \left( \boldsymbol{Y}-\hat {\mu }\boldsymbol{1}\right) '\boldsymbol{V}^{-1}\left( \boldsymbol{Y}-\hat {\mu }\boldsymbol{1}\right) \right]\\
+     &=\dfrac {1}{n} tr E\left[  \boldsymbol{V}^{-1}\left( \boldsymbol{Y}-\hat {\mu }\boldsymbol{1}\right)\left( \boldsymbol{Y}-\hat {\mu }\boldsymbol{1}\right)'\right]\\
+     &=\dfrac {1}{n} tr \boldsymbol{V}^{-1} E\left[  \left( \boldsymbol{Y}-\hat {\mu }\boldsymbol{1}\right)\left( \boldsymbol{Y}-\hat {\mu }\boldsymbol{1}\right)'\right]\\
+     &=\dfrac {1}{n} tr \boldsymbol{V}^{-1} \left[ var\left( \boldsymbol{Y}-\hat {\mu }\boldsymbol{1}\right) +E\left( \boldsymbol{Y}-\hat {\mu }\boldsymbol{1}\right) E\left( Y-\hat {\mu }1\right) \right] \\
+     &=\dfrac {1}{n} tr\left[ \boldsymbol{V}^{-1}  var\left( \boldsymbol{Y}-\hat {\mu }\boldsymbol{1}\right) \right] \\
+\end{alignat*}
+\begin{alignat*}{2}
+    var\left( \boldsymbol{Y}-\hat {\mu }\boldsymbol{1}\right)
+    &= var\left( \boldsymbol{Y}-\dfrac {\boldsymbol{1}\boldsymbol{V}^{-1}\boldsymbol{Y}}{\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}}\boldsymbol{1}\right) \\
+    &= var\left( \boldsymbol{Y}-\dfrac {\boldsymbol{1}\boldsymbol{1}\boldsymbol{V}^{-1}\boldsymbol{Y}}{\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}}\right) \\
+    &= var\left[\left( \boldsymbol{I}-\dfrac {\boldsymbol{1}\boldsymbol{1}'\boldsymbol{V}^{-1}}{\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}}\right) \boldsymbol{Y}\right] \\
+    &= \left( \boldsymbol{I}-\dfrac {\boldsymbol{1}\boldsymbol{1}'\boldsymbol{V}^{-1}}{\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}}\right) \sigma ^{2}\boldsymbol{V}\left( 1-\dfrac {\boldsymbol{1}\boldsymbol{1}'\boldsymbol{V}^{-1}}{\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}}\right) ^{'}\\
+    &=\sigma^2 \left( \boldsymbol{V}-\dfrac {\boldsymbol{1}\boldsymbol{1}'}{\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}}\right)
+\end{alignat*}
+\begin{alignat*}{2}
+    \therefore 
+    E(\hat{\sigma^2})
+    &=\dfrac {1}{n} tr\left[ \boldsymbol{V}^{-1}  var\left( \boldsymbol{Y}-\hat {\mu }\boldsymbol{1}\right) \right] \\
+    &=\dfrac {1}{n}\sigma ^{2}\left[ tr\boldsymbol{V}^{-1}\boldsymbol{V}-tr\dfrac {\boldsymbol{V}^{-1}\boldsymbol{1}\boldsymbol{1}'}{\boldsymbol{1}'\boldsymbol{V}\boldsymbol{1}}\right] \\
+    &=\dfrac{1}{n}\sigma^2\left( n-\dfrac{\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}'}{\boldsymbol{1}'\boldsymbol{V}\boldsymbol{1}} \right)\\
+    &= \dfrac{n-1}{n}\sigma^2
+\end{alignat*}
 
 
 \section*{Question c}
@@ -54,13 +81,25 @@
     \dfrac {\partial ^{2}\ln L}{\partial \sigma ^{2}\partial \mu } 
     & \dfrac {\partial \ln L}{\partial {\sigma ^{2}}^{(2)} }
 \end{pmatrix}\]
-\[  \dfrac {\partial ^{2}\ln L}{\partial \mu^2 }=-\dfrac {1'V^{-1}1}{\sigma ^{2}} \]
-\[ \dfrac {\partial^{2}\ln L}{\partial \mu \partial \sigma ^{2}}=\dfrac {1}{\sigma ^{4}}\left[ \mu 1'V^{-1}1-1'V^{-1}\boldsymbol{Y}\right] \]
-\[ \dfrac {\partial ^{2}\ln L}{\partial \sigma ^{2}\partial \mu } = \dfrac {1}{\sigma ^{4}}\left[ \mu 1'V^{-1}1-1'V^{-1}\boldsymbol{Y}\right] \]
-\[ \dfrac {\partial \ln L}{\partial {\sigma ^{2}}^{(2)} } =\dfrac {n}{2\sigma ^{4}}-\dfrac {1}{\sigma ^{6}}\left( Y-\mu 1\right) 'V^{-1}\left( \boldsymbol{Y}-\mu 1\right)  \]
-\[ \therefore \boldsymbol{I}(\boldsymbol{\theta}) =\begin{pmatrix}
+\[  \dfrac {\partial ^{2}\ln L}{\partial \mu^2 }=-\dfrac {\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}}{\sigma ^{2}} \]
+\[ \dfrac {\partial^{2}\ln L}{\partial \mu \partial \sigma ^{2}}=\dfrac {1}{\sigma ^{4}}\left[ \mu \boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}-\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{Y}\right] \]
+\[ \dfrac {\partial ^{2}\ln L}{\partial \sigma ^{2}\partial \mu } = \dfrac {1}{\sigma ^{4}}\left[ \mu \boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}-\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{Y}\right] \]
+\[ \dfrac {\partial \ln L}{\partial {\sigma ^{2}}^{(2)} } =\dfrac {n}{2\sigma ^{4}}-\dfrac {1}{\sigma ^{6}}\left( \boldsymbol{Y}-\mu \boldsymbol{1}\right) '\boldsymbol{V}^{-1}\left( \boldsymbol{Y}-\mu \boldsymbol{1}\right)  \]
+\[ \therefore \boldsymbol{I}^{-1}(\boldsymbol{\theta}) =\begin{pmatrix}
+\dfrac{\sigma^2}{\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}}   &   0        \\
+0                             &   \dfrac{2\sigma^2}{n}
+\end{pmatrix} ,\,\,
+var(\hat{\sigma^2})\ge -\dfrac{1}{E\left(\dfrac {\partial ^{2}\ln L}{\partial \mu^2 }\right)} = \dfrac {\sigma ^{2}}{\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}}
+\]
 
-\end{pmatrix}  \]
+\[\because E\left( \hat {\mu }\right) =\mu \]
+\[var\left( \hat {\mu }\right) 
+=var\left( \dfrac {\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{Y}}{\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}}\right) 
+=\dfrac {var\left[ \left( \boldsymbol{1}'\boldsymbol{V}^{-1}\right) \boldsymbol{Y}\right] }{\left( \boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}\right) ^{2}}
+=\dfrac {\left( \boldsymbol{1}'\boldsymbol{V}^{-1}\right) \sigma ^{2}\boldsymbol{V}\left( \boldsymbol{1}'\boldsymbol{V}^{-1}\right)'}{\left( \boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}\right) ^{2}}
+=\dfrac {\sigma ^{2}}{\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}}
+\]
+\[\therefore \hat{\mu}\,\,is\,\,efficient.\]
 
 \section*{Question d}
 \noindent Solution:
@@ -71,76 +110,33 @@
 \[\therefore \hat {\theta }=\dfrac {1}{n}\sum ^{n}_{i=1}\dfrac {y_{i}}{i}\]
 % \[ E\left( \hat {\theta }\right) =\dfrac {1}{n}\sum ^{n}_{i=1}\dfrac {E\left( y_{i}\right) }{i}=\dfrac {1}{n}.\sum ^{n}_{i=1}\dfrac {i\theta }{i}=\theta \]
 \[ var\left( \hat {\theta }\right) =\dfrac {1}{n^{2}}\sum \dfrac {var\left( y_{i}\right) }{i^{2}}=\dfrac {1}{n^{2}}\sum ^{n}_{i=1}\dfrac {i^{2}\sigma ^{2}}{i^{2}}=\dfrac{\sigma ^{2}}{n} \]
-\[ \because \dfrac {\partial ^{2}\ln L}{\partial \theta ^{2}}=-\dfrac {n}{\sigma ^{2}}\]
-\[var\left( \hat {\theta }\right) \geq -\dfrac {1}{E\left( \dfrac {\partial ^{2}\ln L}{\partial \theta ^{2}}\right) }=\dfrac {\sigma ^{2}}{n}\]
+\[ \because \dfrac {\partial ^{2}\ln L}{\partial \theta ^{2}}=-\dfrac {n}{\sigma ^{2}},\, var\left( \hat {\theta }\right) \geq -\dfrac {1}{E\left( \dfrac {\partial ^{2}\ln L}{\partial \theta ^{2}}\right) }=\dfrac {\sigma ^{2}}{n}\]
 \[ \therefore \hat{\theta}\,\, is\,\, an\,\, efficient\,\, estimator.\]
 
 
-\begin{alignat*}{2}
-    \sum_{i=1}^{4}\left( X_{i}-\bar {X}\right) ^{2}
-    &=\sum ^{4}_{i=1}X^{2}_{i}-4\bar {X}^{2}\\
-    &=\sum ^{4}_{i=1}X^{2}_{i}-4\Big[ \dfrac{1}{4}(X_1+X_2+X_3+X_4) \Big]^{2}\\  
-    &=\sum ^{4}_{i=1}X^{2}_{i}-\dfrac {1}{2}\left( \sum ^{4}_{i=1}X^{2}_{i}+2\sum _{1\leq i < j\leq 4}X_{i}X_{j}\right) \\
-    &=\dfrac {3}{4}\sum ^{4}_{i=1}X^{2}_{i}-\dfrac {1}{2}\sum _{1\leq i < j\leq 4}X_{i}X_{j}
-\end{alignat*}
-\begin{alignat*}{2}
-    RHS  
-    &=\Big( \dfrac {1}{2}X_1^{2}-X_{1}X_{2}+\dfrac {1}{2}X^{2}_{2} \Big)
-     +\Big( \dfrac {2}{3}X^{2}_{3}+\dfrac {1}{6}\left( X_{1}+X_{2}\right) ^{2}-\dfrac {2}{3}X_{3}\left( X_{1}+X_{2}\right) \Big)
-     +\dfrac{3}{4}\Big( X_4-\dfrac{1}{3}(X_1+X_2+X_3) \Big)^2\\
-    &=\cdots \cdots(simple\, but\, tedious\, simplifications)\\
-    &=\dfrac {3}{4}\sum ^{4}_{i=1}X^{2}_{i}-\dfrac {1}{2}\sum _{1\leq i < j\leq 4}X_{i}X_{j}
-\end{alignat*}
-\[\therefore 
-\sum_{i=1}^{4}\left( X_{i}-\bar {X}\right) ^{2}=
-\dfrac {\left( X_{1}-X_{2}\right) ^{2}}{2}+\dfrac {\left[ X_{3}-\frac {\left( X_{1}+X_{2}\right) }{2}\right] ^{2}}{\frac {3}{2}}
-    \dfrac {\left[ X_{4}-\frac {\left( X_{1}+X_{2}+X_{3}\right) }{3}\right] ^{2}}{\frac {4}{3}}
-  \]
-
-\[\because X_1-X_2\sim N(0,\sqrt{2})\]
-\[\therefore \dfrac{(X_1-X_2)^2}{2}\sim \chi_1^2\]
-\[\because X_3-\dfrac{X_1+X_2}{2}\sim N(0,\sqrt{\dfrac{3}{2}})\]
-\[\therefore \dfrac{(X_3-\frac{X_1+X_2}{2})^2}{\frac{3}{2}} \sim \chi_1^2\]
-\[\because X_4-\dfrac{X_1+X_2+X_3}{3}\sim N(0,\sqrt{\dfrac{4}{3}})\]
-\[\therefore \dfrac{(X_4-\frac{X_1+X_2+X_3}{3})^2}{\frac{4}{3}} \sim \chi_1^2\]
-
-  \[ \boldsymbol{X}=
-    \begin{pmatrix}X_1 & X_2 & X_3 &X_4 \end{pmatrix} '
-    \]
-\[
-    \begin{pmatrix}X_1-X_2 \\ X_3-\frac{X_1+X_2}{2} \\ X_4-\frac{X_1+X_2+X3}{3} \end{pmatrix}
-    = \begin{pmatrix} 1 & -1 & 0 & 0 \\
-                     -\frac{1}{2} & -\frac{1}{2} & 1 & 0 \\
-                     -\frac{1}{3} & -\frac{1}{3} & -\frac{1}{3} & 1
-    \end{pmatrix} \begin{pmatrix}X_1 \\ X_2 \\ X_3 \\ X_4\end{pmatrix}
-    =\boldsymbol{AX}
-    \]
-\[
-    var( \boldsymbol{AX} ) = \boldsymbol{A}var(\boldsymbol{X})\boldsymbol{A}'
-= \begin{pmatrix} 1 & -1 & 0 & 0 \\
-                     -\frac{1}{2} & -\frac{1}{2} & 1 & 0 \\
-                     -\frac{1}{3} & -\frac{1}{3} & -\frac{1}{3} & 1
-    \end{pmatrix}
-    \begin{pmatrix} 1 & 0 & 0 & 0 \\
-                    0 & 1 & 0 & 0 \\
-                    0 & 0 & 1 & 0 \\
-                    0 & 0 & 0 & 1 \\
-    \end{pmatrix}
-    \begin{pmatrix} 1 & -\frac{1}{2} & -\frac{1}{3} \\
-                    -1 & -\frac{1}{2} & -\frac{1}{3}\\
-                    0 & 1 & -\frac{1}{3}\\
-                    0 & 0 & 1\\
-    \end{pmatrix}
-=    \begin{pmatrix} 2 & 0 & 0 \\
-                    0 & \frac{3}{2} & 0  \\
-                    0 & 0 & \frac{4}{3}  \\
-    \end{pmatrix}
-\]
-So the three terms in the RHS are independent each with a $\chi_1^2$ distribution.
 \section*{Question e}
 Suppose the radius equals $R$.\,$R_i = R+\epsilon_i,\,i=1,2,\cdots n.$
 \[ E(\bar{R}) =\dfrac{1}{n}\sum_{i=1}^n E(R+\epsilon_1) = \dfrac{1}{n}\sum_{i=1}^n R+E(\epsilon_1) = R\]
-\[ var(\bar{R}) = var(\bar{R})+(E\bar{R})^2 = \dfrac{1}{n^2}\sum_{i=1}^n var(R+\epsilon_1) + R^2 =\dfrac{\sigma^2}{n}+R^2\] 
+\[ E(\bar{R}^2) = var(\bar{R})+(E\bar{R})^2 = \dfrac{1}{n^2}\sum_{i=1}^n var(R+\epsilon_1) + R^2 =\dfrac{\sigma^2}{n}+R^2\] 
+\[ \therefore Define\,\,\hat{R^2} = \bar{R}^2-\dfrac{S^2}{n},\,E(\hat{R^2})=R^2 \]
+\[\therefore The \,\, unbiased \,\, estimator\,\,  of\,\,  area\,\,  is \,\, \hat{A} = \pi\left(\bar{R}^2-\dfrac{S^2}{n}\right)\]
+
+
+\section*{Question f}
+\[X=Y^2\]
+\begin{alignat*}{5}
+    F_X(x)&=P(X\le x)\\
+    &=P(Y\le \sqrt{x})\\
+    &=\int_0^{\sqrt{x}} \dfrac{2y}{\theta}e^{-\frac{y^2}{\theta}}\mathrm{d}y
+\end{alignat*}
+\[  f(x)=F'_X(x)=\dfrac{1}{\theta}e^{-\frac{x}{\theta}}\]
+\[\therefore Y^2 \sim exp\left(\dfrac{1}{\theta}\right)\]
+\[ var(\hat{\theta}) = \dfrac{1}{n^2}\sum_{i=0}^n var(Y_i^2)=\dfrac{1}{n^2}n\theta^2 = \dfrac{\theta^2}{n}\]
+\[\because \dfrac {\partial ^{2}\ln f\left( x\right) }{\partial \theta ^{2}}=\dfrac {1}{\theta ^{2}}-\dfrac {2x}{\theta ^{3}}\]
+\[var(\hat{\theta}) \ge -\dfrac{1}{nE(\dfrac {1}{\theta ^{2}}-\dfrac {2x}{\theta ^{3}})}
+= -\dfrac{1}{nE\left(\dfrac {1}{\theta ^{2}}-\dfrac {2E(x)}{\theta ^{3}}\right)} =\dfrac{\theta^2}{n}\]
+\[\therefore \hat{\theta}\,\, is\,\, efficient\]
+
 
 \section*{Question g}
 \[E\left( T-\theta \right) ^{2}=var\left( T\right) +B^{2}\]
