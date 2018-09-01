@@ -92,8 +92,8 @@
 var(\hat{\sigma^2})\ge -\dfrac{1}{E\left(\dfrac {\partial ^{2}\ln L}{\partial \mu^2 }\right)} = \dfrac {\sigma ^{2}}{\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}}
 \]
 
-\[\because E\left( \hat {\mu }\right) =\mu \]
-\[var\left( \hat {\mu }\right) 
+\[\because E\left( \hat {\mu }\right) =\mu,\,\,
+var\left( \hat {\mu }\right) 
 =var\left( \dfrac {\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{Y}}{\boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}}\right) 
 =\dfrac {var\left[ \left( \boldsymbol{1}'\boldsymbol{V}^{-1}\right) \boldsymbol{Y}\right] }{\left( \boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}\right) ^{2}}
 =\dfrac {\left( \boldsymbol{1}'\boldsymbol{V}^{-1}\right) \sigma ^{2}\boldsymbol{V}\left( \boldsymbol{1}'\boldsymbol{V}^{-1}\right)'}{\left( \boldsymbol{1}'\boldsymbol{V}^{-1}\boldsymbol{1}\right) ^{2}}
@@ -103,19 +103,19 @@ var(\hat{\sigma^2})\ge -\dfrac{1}{E\left(\dfrac {\partial ^{2}\ln L}{\partial \m
 
 \section*{Question d}
 \noindent Solution:
-\[ f\left( y_{i}\right) =\dfrac {1}{\sqrt {2\pi }i\sigma }e^{-\dfrac {\left( y-i\theta \right) ^{2}}{2\left( i\sigma \right) ^{2}}}\]
+\[ f\left( y_{i}\right) =\dfrac {1}{\sqrt {2\pi }i\sigma }e^{-\frac {\left( y-i\theta \right) ^{2}}{2\left( i\sigma \right) ^{2}}}\]
 \[ L=\prod ^{n}_{i=1}f\left( y_{i}\right) =\left( 2\pi \right) ^{-\frac {n}{2}}\prod ^{n}_{i=1}i\sigma ^{-n}e^{-\frac {1}{2\sigma^2}\sum ^{n}_{i=1}\left( \frac {y_{i}-i\theta }{i}\right) ^{2}}\]
 \[ \ln L=-\dfrac {n}{2}\ln 2\pi +\sum ^{n}_{i=1}\ln i-n\ln \sigma -\dfrac {1}{2\sigma ^{2}}\sum ^{n}_{i=1}\left( \theta -\dfrac {y_{i}}{i}\right) ^{2} \]
 \[ \dfrac {\partial \ln L}{\partial \theta }=-\dfrac {1}{\sigma ^{2}}\sum ^{n}_{i=1}\left( \theta -\dfrac {y_{i}}{i}\right) =0\]
 \[\therefore \hat {\theta }=\dfrac {1}{n}\sum ^{n}_{i=1}\dfrac {y_{i}}{i}\]
 % \[ E\left( \hat {\theta }\right) =\dfrac {1}{n}\sum ^{n}_{i=1}\dfrac {E\left( y_{i}\right) }{i}=\dfrac {1}{n}.\sum ^{n}_{i=1}\dfrac {i\theta }{i}=\theta \]
 \[ var\left( \hat {\theta }\right) =\dfrac {1}{n^{2}}\sum \dfrac {var\left( y_{i}\right) }{i^{2}}=\dfrac {1}{n^{2}}\sum ^{n}_{i=1}\dfrac {i^{2}\sigma ^{2}}{i^{2}}=\dfrac{\sigma ^{2}}{n} \]
-\[ \because \dfrac {\partial ^{2}\ln L}{\partial \theta ^{2}}=-\dfrac {n}{\sigma ^{2}},\, var\left( \hat {\theta }\right) \geq -\dfrac {1}{E\left( \dfrac {\partial ^{2}\ln L}{\partial \theta ^{2}}\right) }=\dfrac {\sigma ^{2}}{n}\]
+\[ \because \dfrac {\partial ^{2}\ln L}{\partial \theta ^{2}}=-\dfrac {n}{\sigma ^{2}},\, var\left( \hat {\theta }\right) \geq -\dfrac {1}{E\left( \dfrac {\partial ^{2}\ln L}{\partial \theta ^{2}}\right) }=-\dfrac{1}{-\dfrac{1}{\sigma^2}n}=\dfrac {\sigma ^{2}}{n}\]
 \[ \therefore \hat{\theta}\,\, is\,\, an\,\, efficient\,\, estimator.\]
 
 
 \section*{Question e}
-Suppose the radius equals $R$.\,$R_i = R+\epsilon_i,\,i=1,2,\cdots n.$
+Suppose the radius equals $R$.\,\,$R_i = R+\epsilon_i,\,\epsilon\sim N(0,\sigma),\,\, i=1,2,\cdots n.$
 \[ E(\bar{R}) =\dfrac{1}{n}\sum_{i=1}^n E(R+\epsilon_1) = \dfrac{1}{n}\sum_{i=1}^n R+E(\epsilon_1) = R\]
 \[ E(\bar{R}^2) = var(\bar{R})+(E\bar{R})^2 = \dfrac{1}{n^2}\sum_{i=1}^n var(R+\epsilon_1) + R^2 =\dfrac{\sigma^2}{n}+R^2\] 
 \[ \therefore Define\,\,\hat{R^2} = \bar{R}^2-\dfrac{S^2}{n},\,E(\hat{R^2})=R^2 \]
